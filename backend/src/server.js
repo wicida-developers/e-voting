@@ -22,14 +22,14 @@ app.put('/api/mhs/:nim', async (req, res) => {
   const { pilihan } = req.body;
   try {
     if (!nim) throw new Error('NIM tidak boleh kosong');
+    if (!pilihan) throw new Error('Pilihan tidak boleh kosong');
+
     const mahasiswa = await Mahasiswa.findOne({ nim });
 
     if (!mahasiswa) throw new Error('NIM anda tidak ditemukan');
-    if (mahasiswa.sudahMemilih) throw new Error(`${nim} sudah memilih`);
-    if (!pilihan) throw new Error('Pilihan tidak boleh kosong');
+    if (mahasiswa.pilihan) throw new Error(`${nim} sudah memilih`);
 
     mahasiswa.pilihan = pilihan;
-    mahasiswa.sudahMemilih = true;
     await mahasiswa.save();
 
     res.send({ status: 200, message: 'Data berhasil diubah' });
