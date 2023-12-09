@@ -1,7 +1,7 @@
 import { model, Schema } from "mongoose"
 
 const PollSchema = new Schema({
-  id: Number,
+  id: String,
   count: {
     type: Number,
     default: 0,
