@@ -1,9 +1,8 @@
-const express = require("express")
-const cors = require("cors")
-const compression = require("compression")
-const { connectDB } = require("./utils")
-const Mahasiswa = require("./models/Mahasiswa")
-
+/* eslint-disable no-undef */
+import express from "express"
+import cors from "cors"
+import compression from "compression"
+import connectDB from "./db/index.js"
 const app = express()
 const PORT = process.env.PORT || 3001
 
@@ -16,26 +15,31 @@ app.use(cors())
 
 app.get("/api", (_, res) => res.send({ message: "Hello World!" }))
 
-app.put("/api/mhs/:nim", async (req, res) => {
-  const { nim } = req.params
-  const { pilihan } = req.body
-  try {
-    if (!nim) throw new Error("NIM tidak boleh kosong")
-    if (!pilihan) throw new Error("Pilihan tidak boleh kosong")
+// app.get("/api/polls", async (_, res) => {})
+// app.post("/api/login", auth, async (req, res) => {})
+// app.get("/api/users/me", auth, async (req, res) => {})
+// app.post("/api/choose", auth,async (req, res) => {})
 
-    const mahasiswa = await Mahasiswa.findOne({ nim })
+// app.put("/api/mhs/:nim", async (req, res) => {
+//   const { nim } = req.params
+//   const { pilihan } = req.body
+//   try {
+//     if (!nim) throw new Error("NIM tidak boleh kosong")
+//     if (!pilihan) throw new Error("Pilihan tidak boleh kosong")
 
-    if (!mahasiswa) throw new Error("NIM anda tidak ditemukan")
-    if (mahasiswa.pilihan) throw new Error(`${nim} sudah memilih`)
+//     const mahasiswa = await Mahasiswa.findOne({ nim })
 
-    mahasiswa.pilihan = pilihan
-    await mahasiswa.save()
+//     if (!mahasiswa) throw new Error("NIM anda tidak ditemukan")
+//     if (mahasiswa.pilihan) throw new Error(`${nim} sudah memilih`)
 
-    res.send({ status: 200, message: "Data berhasil diubah" })
-  } catch (err) {
-    res.status(400).send({ status: 400, message: err.message })
-  }
-})
+//     mahasiswa.pilihan = pilihan
+//     await mahasiswa.save()
+
+//     res.send({ status: 200, message: "Data berhasil diubah" })
+//   } catch (err) {
+//     res.status(400).send({ status: 400, message: err.message })
+//   }
+// })
 
 app.all("*", (_, res) => res.status(404).send({ message: "Not Found!" }))
 
