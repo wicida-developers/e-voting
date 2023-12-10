@@ -7,6 +7,7 @@ import auth from "./middleware/auth.js"
 import User from "./models/User.js"
 import Poll from "./models/Poll.js"
 import jwt from "jsonwebtoken"
+import "dotenv/config"
 
 const app = express()
 const PORT = process.env.PORT || 3001
@@ -24,6 +25,7 @@ app.get("/api/polls", async (_, res) => {
   try {
     const polls = await Poll.find()
     const data = polls.map(({ id, count }) => ({ [id]: count }))
+
     res.send({
       status: 200,
       message: "Data berhasil ditemukan",
@@ -36,11 +38,13 @@ app.get("/api/polls", async (_, res) => {
 
 app.post("/api/login", async (req, res) => {
   const { username, password } = req.body
+
   try {
     if (!username) throw new Error("Username tidak boleh kosong")
     if (!password) throw new Error("Password tidak boleh kosong")
 
     const user = await User.findOne({ username, password })
+
     if (!user) throw new Error("Username atau password salah")
 
     const jwtPayload = {
