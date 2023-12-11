@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux"
 import Routes from "./routes"
 import { useEffect } from "react"
 import { asyncPreloadProcess } from "./states/isPreload/action"
+import Loading from "./components/loading"
 
 function App() {
   const isPreload = useSelector((state) => state.isPreload)
@@ -12,7 +13,7 @@ function App() {
     dispatch(asyncPreloadProcess())
   }, [dispatch])
 
-  if (isPreload) return <div className="App">Loading...</div>
+  if (isPreload) return <Loading />
 
   return (
     <main className="App">

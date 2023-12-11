@@ -1,21 +1,69 @@
 import CandidateCard from "../components/CandidateCard"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
-import { Chart as ChartJS, registerables } from "chart.js"
+//import { Chart as ChartJS, registerables } from "chart.js"
+import hero_image from "../assets/hero.jpg"
 // import { Bar } from "react-chartjs-2"
 
 export default function LandingPage() {
-  ChartJS.register(...registerables)
+  //ChartJS.register(...registerables)
+
+  const dataCandidate = [
+    {
+      name: "Sigit Syamsu Alam",
+      no: 1,
+      visi: "Membangun Himpunan Mahasiswa Teknik Informatika yang lebih baik, maju dan berdaya saing tinggi serta mampu bersaing di tingkat nasional maupun internasional",
+      misi: [
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+      ],
+    },
+    {
+      name: "Sigit Syamsu Alam",
+      no: 2,
+      visi: "Membangun Himpunan Mahasiswa Teknik Informatika yang lebih baik, maju dan berdaya saing tinggi serta mampu bersaing di tingkat nasional maupun internasional",
+      misi: [
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+      ],
+    },
+    {
+      name: "Sigit Syamsu Alam",
+      no: 3,
+      visi: "Membangun Himpunan Mahasiswa Teknik Informatika yang lebih baik, maju dan berdaya saing tinggi serta mampu bersaing di tingkat nasional maupun internasional",
+      misi: [
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+      ],
+    },
+  ]
 
   return (
-    <div className="LandingPage flex flex-col overflow-auto px-8 xl:px-40 2xl:px-60">
+    <div className="LandingPage flex flex-col overflow-auto">
       <Header />
-      <section className="Hero flex flex-col justify-center items-center w-full mb-4">
-        <img src="https://placehold.co/600x400" className="xl:w-full object-cover" />
+      <section className="Hero flex flex-col justify-center h-screen xl:h-full items-center aspect-video mb-4 relative">
+        <div className="absolute h-full w-full bg-black opacity-50 text-white"></div>
+        <div className="absolute h-full w-full flex flex-col justify-center gap-5 text-center items-center text-white font-semibold">
+          <p className="text-2xl md:text-3xl lg:text-5xl animate__animated animate__backInDown">PEMILIHAN KETUA UMUM</p>
+          <p className="text-sm p-1 bg-blue-400 text-white lg:text-3xl md:p-2 animate__animated animate__fadeIn">
+            Himpunan Mahasiswa Teknik Informatika
+          </p>
+        </div>
+        <img src={hero_image} className="xl:w-full w-full h-full object-cover xl:aspect-video" />
       </section>
       <section className="Candidate flex flex-col justify-center items-center w-full">
-        <CandidateCard />
-        <CandidateCard />
+        {dataCandidate.map((data, index) => (
+          <CandidateCard {...data} key={index} />
+        ))}
       </section>
       {/* <section className="TotalCount flex flex-col justify-center items-center w-full mt-4 mb-4">
         <h1 className="text-2xl font-bold ">Hasil Perhitungan</h1>
@@ -45,8 +93,11 @@ export default function LandingPage() {
           />
         </div>
       </section> */}
-      <section className="mb-10">
-        <button className="w-full bg-blue-100 p-4 flex items-center justify-center gap-4 rounded-md">
+      <section className="mb-10 px-5">
+        <a
+          href="/vote"
+          className="w-full mx-auto max-w-2xl bg-blue-100 p-4 flex items-center justify-center gap-4 rounded-md hover:scale-105 duration-200"
+        >
           <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className="w-6">
             <g id="SVGRepo_bgCarrier" strokeWidth="0"></g>
             <g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g>
@@ -58,7 +109,7 @@ export default function LandingPage() {
             </g>
           </svg>
           <p className="font-semibold text-blue-800">Voting Di Sini</p>
-        </button>
+        </a>
       </section>
       <Footer />
     </div>
