@@ -10,7 +10,7 @@ export default withMT({
         sans: ["Poppins", ...defaultTheme.fontFamily.sans],
       },
       colors: {
-        loginBg: "#061FFF",
+        loginBg: "#60a5fa",
       },
     },
   },
