@@ -1,3 +1,4 @@
+import myToast from "../../components/myToast"
 import api from "../../lib/api"
 
 const ActionType = {
@@ -24,7 +25,10 @@ function asyncSetAuthUser({ username, password }) {
       const authUser = await api.login({ username, password })
       dispatch(setAuthUser(authUser))
     } catch (error) {
-      console.error(error)
+      myToast.fire({
+        icon: "error",
+        title: error.message,
+      })
     }
   }
 }
@@ -35,9 +39,12 @@ function asyncUnsetAuthUser() {
       api.removeAccessToken()
       dispatch(unsetAuthUser())
     } catch (error) {
-      console.error(error)
+      myToast.fire({
+        icon: "error",
+        title: error.message,
+      })
     }
   }
 }
 
-export { ActionType, asyncSetAuthUser, asyncUnsetAuthUser }
+export { ActionType, setAuthUser, asyncSetAuthUser, asyncUnsetAuthUser }
