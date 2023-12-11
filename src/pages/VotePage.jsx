@@ -37,7 +37,7 @@ export default function VotePage() {
   }
 
   return (
-    <main className="min-h-screen bg-blue-400 grid place-items-center">
+    <main className="min-h-screen bg-blue-400 grid place-items-center px-8 md:px-0">
       <section className="max-w-2xl w-full text-center bg-gray-50 py-12 px-9 rounded-lg mx-8 md:shadow-md md:border md:border-gray-200">
         <h1 className="text-xl font-bold mb-10 md:text-2xl lg:text-3xl">
           PEMILIHAN CALON KETUA UMUM
