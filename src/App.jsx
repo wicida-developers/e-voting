@@ -1,7 +1,11 @@
-import LoginPage from "./pages/LoginPage"
+import Routes from "./routes"
 
 function App() {
-  return <LoginPage />
+  return (
+    <main className="App">
+      <Routes />
+    </main>
+  )
 }
 
 export default App
