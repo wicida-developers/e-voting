@@ -1,6 +1,6 @@
 export default function LoginPage() {
   return (
-    <main className="min-h-screen bg-blue-400 grid place-items-center">
+    <main className="min-h-screen bg-blue-400 grid place-items-center px-8 md:px-0">
       <section className="max-w-md w-full bg-gray-50 py-12 px-9 rounded-lg mx-3 md:mx-0 md:shadow-md md:border md:border-gray-200">
         <h1 className="text-3xl font-bold mb-10">E-Vote Login</h1>
         <form className="space-y-4">
