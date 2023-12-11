@@ -13,7 +13,7 @@ export default function Header() {
       <div className="button flex flex-row items-center">
         <Button
           onClick={() => navigate("/login")}
-          className="bg-white text-loginBg border-loginBg border-2 shadow-none"
+          className="bg-transparent text-loginBg border-loginBg border-2 shadow-none hover:bg-blue-400 hover:text-blue-gray-50"
         >
           Login
         </Button>
