@@ -1,4 +1,4 @@
-import myToast from "../../components/myToast"
+import myToast from "../../components/MyToast"
 import api from "../../lib/api"
 
 const ActionType = {

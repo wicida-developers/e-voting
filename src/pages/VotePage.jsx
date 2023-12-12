@@ -3,7 +3,7 @@ import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
 
 export default function VotePage() {
-  const [voteStatus, setVoteStatus] = useState(false)
+  const [voteStatus, setVoteStatus] = useState(localStorage.getItem("voteStatus") || false)
 
   const handleVote = async (e) => {
     const { value } = e.target
@@ -28,6 +28,7 @@ export default function VotePage() {
 
         console.log(value)
         if (secondConfirmation.isConfirmed) {
+          localStorage.setItem("voteStatus", true)
           setVoteStatus(true)
         }
       }
