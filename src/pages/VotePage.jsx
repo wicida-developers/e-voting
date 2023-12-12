@@ -72,7 +72,7 @@ export default function VotePage() {
                 {dataCandidate.map((data, index) => (
                   <button
                     key={index}
-                    className="relative bg-red-300 md:h-[330px] hover:scale-105 w-1/2 transition-transform"
+                    className="relative bg-cyan-300 md:h-[330px] hover:scale-105 w-1/2 transition-transform rounded-md overflow-auto"
                     value={data.id}
                     onClick={() => handleVote(data.id)}
                   >
