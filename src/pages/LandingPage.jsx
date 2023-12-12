@@ -20,6 +20,7 @@ export default function LandingPage() {
         "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
         "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
       ],
+      numberPosition: "bottomRight", // topLeft, topRight, bottomLeft, bottomRight default position is bottomRight
     },
     {
       name: "Sigit Syamsu Alam",
@@ -32,6 +33,7 @@ export default function LandingPage() {
         "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
         "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
       ],
+      numberPosition: "topLeft", // topLeft, topRight, bottomLeft, bottomRight default position is bottomRight
     },
     {
       name: "Sigit Syamsu Alam",
@@ -44,6 +46,7 @@ export default function LandingPage() {
         "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
         "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
       ],
+      numberPosition: "topRight", // topLeft, topRight, bottomLeft, bottomRight default position is bottomRight
     },
   ]
 
