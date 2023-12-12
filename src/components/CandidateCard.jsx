@@ -1,15 +1,12 @@
 import PropTypes from "prop-types"
 
-export default function CandidateCard({ name, no, visi, misi, numberPosition }) {
+export default function CandidateCard({ name, no, img, visi, misi, numberPosition }) {
   const numberPositionComp = () => {
     switch (numberPosition) {
       case "topLeft":
         return (
           <>
-            <img
-              src="https://placehold.co/600x400"
-              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
-            />
+            <img src={img} className="rounded-lg border-2 border-loginBg xl:w-full object-cover" />
             <p className="text-loginBg font-bold text-2xl absolute top-0 left-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-tl-none border-b-2 border-r-2 border-loginBg">
               {no}
             </p>
@@ -18,10 +15,7 @@ export default function CandidateCard({ name, no, visi, misi, numberPosition }) 
       case "topRight":
         return (
           <>
-            <img
-              src="https://placehold.co/600x400"
-              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
-            />
+            <img src={img} className="rounded-lg border-2 border-loginBg xl:w-full object-cover" />
             <p className="text-loginBg font-bold text-2xl absolute top-0 right-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-tr-none border-b-2 border-l-2 border-loginBg">
               {no}
             </p>
@@ -30,10 +24,7 @@ export default function CandidateCard({ name, no, visi, misi, numberPosition }) 
       case "bottomLeft":
         return (
           <>
-            <img
-              src="https://placehold.co/600x400"
-              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
-            />
+            <img src={img} className="rounded-lg border-2 border-loginBg xl:w-full object-cover" />
             <p className="text-loginBg font-bold text-2xl absolute bottom-0 left-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-bl-none border-r-2 border-t-2 border-loginBg">
               {no}
             </p>
@@ -42,10 +33,7 @@ export default function CandidateCard({ name, no, visi, misi, numberPosition }) 
       case "bottomRight":
         return (
           <>
-            <img
-              src="https://placehold.co/600x400"
-              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
-            />
+            <img src={img} className="rounded-lg border-2 border-loginBg xl:w-full object-cover" />
             <p className="text-loginBg font-bold text-2xl absolute bottom-0 right-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-br-none border-t-2 border-l-2 border-loginBg">
               {no}
             </p>
@@ -54,10 +42,7 @@ export default function CandidateCard({ name, no, visi, misi, numberPosition }) 
       default:
         return (
           <>
-            <img
-              src="https://placehold.co/600x400"
-              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
-            />
+            <img src={img} className="rounded-lg border-2 border-loginBg xl:w-full object-cover" />
             <p className="text-loginBg font-bold text-2xl absolute bottom-0 right-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-br-none border-t-2 border-l-2 border-loginBg">
               {no}
             </p>
@@ -85,13 +70,13 @@ export default function CandidateCard({ name, no, visi, misi, numberPosition }) 
         </div>
         <div className="candidate__card__misi flex flex-col justify-center items-center w-full mb-2">
           <p className=" font-bold text-xl self-start mb-2 text-gray-800">Misi</p>
-          <ul className="text-lg self-start list-disc pl-5 text-gray-800">
+          <ol className="text-lg self-start list-decimal pl-5 text-gray-800">
             {misi.map((misi, index) => (
               <li className="mb-2" key={index}>
                 {misi}
               </li>
             ))}
-          </ul>
+          </ol>
         </div>
       </div>
     </div>
@@ -105,5 +90,6 @@ CandidateCard.propTypes = {
   misi: PropTypes.array,
   reverse: PropTypes.bool,
   // should be from "top" or "bottom"
+  img: PropTypes.string,
   numberPosition: PropTypes.string,
 }

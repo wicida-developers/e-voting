@@ -2,51 +2,39 @@ import CandidateCard from "../components/CandidateCard"
 import Footer from "../components/Footer"
 import Header from "../components/Header"
 //import { Chart as ChartJS, registerables } from "chart.js"
-import hero_image from "../assets/hero.jpg"
+import hero_image from "../assets/hero.png"
+import candidate_1 from "../assets/candidate-1.png"
+import candidate_2 from "../assets/candidate-2.png"
+import { Link } from "react-router-dom"
 // import { Bar } from "react-chartjs-2"
 
 export default function LandingPage() {
-  //ChartJS.register(...registerables)
-
   const dataCandidate = [
     {
-      name: "Sigit Syamsu Alam",
+      name: "Chandra panca wibawa",
       no: 1,
-      visi: "Membangun Himpunan Mahasiswa Teknik Informatika yang lebih baik, maju dan berdaya saing tinggi serta mampu bersaing di tingkat nasional maupun internasional",
+      img: candidate_1,
+      visi: "Mewujudkan HiMa - TI sebagai wadah yang ASIK (Aktif, Solutif, Inspiratif, dan Kompeten) bagi seluruh Mahasiswa Program Studi Teknik Informatika STMIK Widya Cipta Dharma ",
       misi: [
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Aktif berperan dalam lingkup IT terkhusus yang ada di Kampus STMIK WiCiDa",
+        "Solutif dalam mewadahi  Mahasiswa Program Studi Teknik Informatika STMIK WiCiDa",
+        "Menjadi wadah yang Inspiratif untuk seluruh Mahasiswa Program Studi Teknik Informatika",
+        "Kompeten dalam Dunia IT di STMIK WiCiDa",
       ],
       numberPosition: "bottomRight", // topLeft, topRight, bottomLeft, bottomRight default position is bottomRight
     },
     {
-      name: "Sigit Syamsu Alam",
+      name: "Arief Budiman",
       no: 2,
-      visi: "Membangun Himpunan Mahasiswa Teknik Informatika yang lebih baik, maju dan berdaya saing tinggi serta mampu bersaing di tingkat nasional maupun internasional",
+      img: candidate_2,
+      visi: "Membangun sebuah Himpunan Mahasiswa yang Aspiratif, inovatif, adaptif dan membentuk kader-kader yang berkompeten serta menjunjung tinggi rasa kekeluargaan sesama Mahasiswa Teknik Informatika STMIK Widya Cipta Dharma.",
       misi: [
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
+        "Mempererat hubungan dan rasa kekeluargaan Himpunan  dengan seluruh Mahasiswa Program Studi Teknik Informatika",
+        "Membentuk kader-kader yang aktif, kreatif, kritis, serta berakhlak mulia dan meningkatkan interaksi dan pengabdian pada masyarakat",
+        "Mengoptimalkan minat bakat dan potensi mahasiswa Teknik Informatika melalui program kerja HiMa-TI",
+        "Memperluas dan memperkuat kerja sama dengan pihak luar kampus STMIK WiCiDa dalam melaksanakan berbagai kegiatan",
       ],
       numberPosition: "topLeft", // topLeft, topRight, bottomLeft, bottomRight default position is bottomRight
-    },
-    {
-      name: "Sigit Syamsu Alam",
-      no: 3,
-      visi: "Membangun Himpunan Mahasiswa Teknik Informatika yang lebih baik, maju dan berdaya saing tinggi serta mampu bersaing di tingkat nasional maupun internasional",
-      misi: [
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-        "Meningkatkan kualitas mahasiswa Teknik Informatika dalam bidang akademik maupun non akademik",
-      ],
-      numberPosition: "topRight", // topLeft, topRight, bottomLeft, bottomRight default position is bottomRight
     },
   ]
 
@@ -97,8 +85,8 @@ export default function LandingPage() {
         </div>
       </section> */}
       <section className="mb-10 px-5">
-        <a
-          href="/login"
+        <Link
+          to="/login"
           className="w-full mx-auto max-w-2xl bg-blue-100 p-4 flex items-center justify-center gap-4 rounded-md hover:scale-105 duration-200"
         >
           <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className="w-6">
@@ -112,7 +100,7 @@ export default function LandingPage() {
             </g>
           </svg>
           <p className="font-semibold text-blue-800">Voting Di Sini</p>
-        </a>
+        </Link>
       </section>
       <Footer />
     </div>

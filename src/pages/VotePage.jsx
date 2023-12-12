@@ -3,6 +3,8 @@ import withReactContent from "sweetalert2-react-content"
 import { useDispatch, useSelector } from "react-redux"
 import { asyncChoose } from "../states/choose/action"
 import myToast from "../components/MyToast"
+import choice_1 from "../assets/choice-1.png"
+import choice_2 from "../assets/choice-2.png"
 
 export default function VotePage() {
   const authUser = useSelector((state) => state.authUser)
@@ -12,11 +14,11 @@ export default function VotePage() {
   const dataCandidate = [
     {
       id: "poll-1",
-      image: "https://placehold.co/600x400",
+      image: choice_1,
     },
     {
       id: "poll-2",
-      image: "https://placehold.co/600x400",
+      image: choice_2,
     },
   ]
 
@@ -57,7 +59,7 @@ export default function VotePage() {
           HIMA-TI STMIK WIDYA CIPTA DHARMA <br /> PERIODE 2023/2024
         </h1>
         <div>
-          <div className="flex gap-5 w-full rounded flex-col items-center sm:flex-row">
+          <div className="flex gap-5 w-full rounded items-center">
             {authUser?.chosen ? (
               <>
                 <div className="m-auto space-y-2">
@@ -70,7 +72,7 @@ export default function VotePage() {
                 {dataCandidate.map((data, index) => (
                   <button
                     key={index}
-                    className="relative bg-red-300 h-[330px] w-full hover:scale-105 md:w-1/2 transition-transform"
+                    className="relative bg-red-300 md:h-[330px] hover:scale-105 w-1/2 transition-transform"
                     value={data.id}
                     onClick={() => handleVote(data.id)}
                   >
