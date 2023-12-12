@@ -6,6 +6,11 @@ function authUserReducer(state = null, action) {
       return action.payload.authUser
     case ActionType.UNSET_AUTH_USER:
       return null
+    case ActionType.SET_AUTH_USER_CHOSEN:
+      return {
+        ...state,
+        chosen: action.payload.chosen,
+      }
     default:
       return state
   }

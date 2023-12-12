@@ -3,6 +3,7 @@ import api from "../../lib/api"
 
 const ActionType = {
   SET_AUTH_USER: "SET_AUTH_USER",
+  SET_AUTH_USER_CHOSEN: "SET_AUTH_USER_CHOSEN",
   UNSET_AUTH_USER: "UNSET_AUTH_USER",
 }
 
@@ -10,6 +11,13 @@ function setAuthUser(authUser) {
   return {
     type: ActionType.SET_AUTH_USER,
     payload: { authUser },
+  }
+}
+
+function setAuthUserChosen(chosen) {
+  return {
+    type: ActionType.SET_AUTH_USER_CHOSEN,
+    payload: { chosen },
   }
 }
 
@@ -47,4 +55,4 @@ function asyncUnsetAuthUser() {
   }
 }
 
-export { ActionType, setAuthUser, asyncSetAuthUser, asyncUnsetAuthUser }
+export { ActionType, setAuthUser, asyncSetAuthUser, asyncUnsetAuthUser, setAuthUserChosen }

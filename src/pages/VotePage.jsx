@@ -1,16 +1,25 @@
-import { useState } from "react"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
-import { useSelector } from "react-redux"
-import api from "../lib/api"
+import { useDispatch, useSelector } from "react-redux"
+import { asyncChoose } from "../states/choose/action"
 
 export default function VotePage() {
   const authUser = useSelector((state) => state.authUser)
-  const [voteStatus, setVoteStatus] = useState(authUser.chosen || false)
 
-  const handleVote = async (e) => {
-    const { value } = e.target
+  const dispatch = useDispatch()
 
+  const dataCandidate = [
+    {
+      id: "poll-1",
+      image: "https://placehold.co/600x400",
+    },
+    {
+      id: "poll-2",
+      image: "https://placehold.co/600x400",
+    },
+  ]
+
+  const handleVote = async (id) => {
     try {
       const firstConfirmation = await withReactContent(Swal).fire({
         title: "Yakin?",
@@ -29,10 +38,8 @@ export default function VotePage() {
           confirmButtonText: "Ok",
         })
 
-        console.log(value)
         if (secondConfirmation.isConfirmed) {
-          await api.choose(value)
-          setVoteStatus(true)
+          dispatch(asyncChoose(id))
         }
       }
     } catch (err) {
@@ -50,7 +57,7 @@ export default function VotePage() {
         </h1>
         <div>
           <div className="flex gap-5 w-full rounded flex-col items-center sm:flex-row">
-            {voteStatus ? (
+            {authUser?.chosen ? (
               <>
                 <div className="m-auto space-y-2">
                   <span className="text-4xl">👍</span>
@@ -59,20 +66,16 @@ export default function VotePage() {
               </>
             ) : (
               <>
-                <button
-                  className="relative bg-red-300 h-[330px] w-full hover:scale-105 md:w-1/2 transition-transform"
-                  value={"poll-1"}
-                  onClick={handleVote}
-                >
-                  <img src="" alt="" />
-                </button>
-                <button
-                  className="relative bg-red-300 h-[330px] w-full hover:scale-105 md:w-1/2 transition-transform"
-                  value={"poll-2"}
-                  onClick={handleVote}
-                >
-                  <img src="" alt="" />
-                </button>
+                {dataCandidate.map((data, index) => (
+                  <button
+                    key={index}
+                    className="relative bg-red-300 h-[330px] w-full hover:scale-105 md:w-1/2 transition-transform"
+                    value={data.id}
+                    onClick={() => handleVote(data.id)}
+                  >
+                    <img src={data.image} className="w-full h-full object-cover" />
+                  </button>
+                ))}
               </>
             )}
           </div>
