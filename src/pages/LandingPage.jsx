@@ -98,7 +98,7 @@ export default function LandingPage() {
       </section> */}
       <section className="mb-10 px-5">
         <a
-          href="/vote"
+          href="/login"
           className="w-full mx-auto max-w-2xl bg-blue-100 p-4 flex items-center justify-center gap-4 rounded-md hover:scale-105 duration-200"
         >
           <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" className="w-6">

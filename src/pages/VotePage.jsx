@@ -38,8 +38,10 @@ export default function VotePage() {
           confirmButtonText: "Ok",
         })
 
+        console.log(value)
         if (secondConfirmation.isConfirmed) {
-          dispatch(asyncChoose(id))
+          await api.choose(value)
+          setVoteStatus(true)
         }
       }
     } catch (err) {
@@ -50,14 +52,14 @@ export default function VotePage() {
   return (
     <main className="min-h-screen bg-blue-400 grid place-items-center px-2 py-4 md:px-0 md:py-0">
       <section className="max-w-2xl w-full text-center bg-gray-50 py-12 px-6 rounded-lg mx-8 md:shadow-md md:border md:border-gray-200">
-        <h1 className="text-xl font-bold mb-10 md:text-2xl lg:text-3xl">
+        <h1 className="text-lg font-bold mb-10 md:text-2xl lg:text-3xl">
           PEMILIHAN CALON KETUA UMUM
           <br />
-          HIMA-TI STMIK WIDYA CIPTA DHARMA <br /> PERIODE 2023/2024
+          Himpunan Mahasiswa Teknik Informatika <br /> PERIODE 2023/2024
         </h1>
         <div>
           <div className="flex gap-5 w-full rounded flex-col items-center sm:flex-row">
-            {authUser?.chosen ? (
+            {voteStatus ? (
               <>
                 <div className="m-auto space-y-2">
                   <span className="text-4xl">👍</span>
@@ -66,16 +68,20 @@ export default function VotePage() {
               </>
             ) : (
               <>
-                {dataCandidate.map((data, index) => (
-                  <button
-                    key={index}
-                    className="relative bg-red-300 h-[330px] w-full hover:scale-105 md:w-1/2 transition-transform"
-                    value={data.id}
-                    onClick={() => handleVote(data.id)}
-                  >
-                    <img src={data.image} className="w-full h-full object-cover" />
-                  </button>
-                ))}
+                <button
+                  className="relative bg-red-300 h-[330px] w-full hover:scale-105 md:w-1/2 transition-transform"
+                  value={"poll-1"}
+                  onClick={handleVote}
+                >
+                  <img src="" alt="" />
+                </button>
+                <button
+                  className="relative bg-red-300 h-[330px] w-full hover:scale-105 md:w-1/2 transition-transform"
+                  value={"poll-2"}
+                  onClick={handleVote}
+                >
+                  <img src="" alt="" />
+                </button>
               </>
             )}
           </div>
