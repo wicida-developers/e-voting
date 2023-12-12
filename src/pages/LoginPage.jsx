@@ -2,10 +2,12 @@ import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { asyncSetAuthUser } from "../states/authUser/action"
 import myToast from "../components/MyToast"
+import { useNavigate } from "react-router-dom"
 
 export default function LoginPage() {
   const [username, setUsername] = useState("")
   const [password, setPassword] = useState("")
+  const navigate = useNavigate()
 
   const dispatch = useDispatch()
 
@@ -13,6 +15,7 @@ export default function LoginPage() {
     e.preventDefault()
     if (!username || !password) return myToast.fire({ icon: "error", title: "Username dan password harus diisi" })
     dispatch(asyncSetAuthUser({ username, password }))
+    navigate("/")
   }
 
   return (
