@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useDispatch } from "react-redux"
 import { asyncSetAuthUser } from "../states/authUser/action"
-import myToast from "../components/myToast"
+import myToast from "../components/MyToast"
 
 export default function LoginPage() {
   const [username, setUsername] = useState("")
