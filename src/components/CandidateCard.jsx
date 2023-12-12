@@ -1,6 +1,71 @@
 import PropTypes from "prop-types"
 
-export default function CandidateCard({ name, no, visi, misi }) {
+export default function CandidateCard({ name, no, visi, misi, numberPosition }) {
+  const numberPositionComp = () => {
+    switch (numberPosition) {
+      case "topLeft":
+        return (
+          <>
+            <img
+              src="https://placehold.co/600x400"
+              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
+            />
+            <p className="text-loginBg font-bold text-2xl absolute top-0 left-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-tl-none border-b-2 border-r-2 border-loginBg">
+              {no}
+            </p>
+          </>
+        )
+      case "topRight":
+        return (
+          <>
+            <img
+              src="https://placehold.co/600x400"
+              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
+            />
+            <p className="text-loginBg font-bold text-2xl absolute top-0 right-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-tr-none border-b-2 border-l-2 border-loginBg">
+              {no}
+            </p>
+          </>
+        )
+      case "bottomLeft":
+        return (
+          <>
+            <img
+              src="https://placehold.co/600x400"
+              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
+            />
+            <p className="text-loginBg font-bold text-2xl absolute bottom-0 left-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-bl-none border-r-2 border-t-2 border-loginBg">
+              {no}
+            </p>
+          </>
+        )
+      case "bottomRight":
+        return (
+          <>
+            <img
+              src="https://placehold.co/600x400"
+              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
+            />
+            <p className="text-loginBg font-bold text-2xl absolute bottom-0 right-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-br-none border-t-2 border-l-2 border-loginBg">
+              {no}
+            </p>
+          </>
+        )
+      default:
+        return (
+          <>
+            <img
+              src="https://placehold.co/600x400"
+              className="rounded-lg border-2 border-loginBg xl:w-full object-cover"
+            />
+            <p className="text-loginBg font-bold text-2xl absolute bottom-0 right-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-br-none border-t-2 border-l-2 border-loginBg">
+              {no}
+            </p>
+          </>
+        )
+    }
+  }
+
   return (
     <div
       className={`candidate__card flex px-6 flex-col md:gap-5 md:px-8 xl:px-10  justify-center items-center xl:items-start xl:my-20 w-full h-1/2 mb-4 ${
@@ -8,10 +73,7 @@ export default function CandidateCard({ name, no, visi, misi }) {
       }`}
     >
       <div className="candidate__card__image flex flex-col justify-center items-center w-full relative mb-2">
-        <img src="https://placehold.co/600x400" className="rounded-lg border-2 border-loginBg xl:w-full object-cover" />
-        <p className="text-loginBg font-bold text-2xl absolute bottom-0 right-0 bg-[#fcfdff] px-5 py-2 rounded-full rounded-br-none border-t-2 border-l-2 border-loginBg">
-          {no}
-        </p>
+        {numberPositionComp()}
       </div>
       <div className="md:w-5/6 lg:w-full">
         <div className="candidate__card__name flex flex-col justify-center items-center w-full mb-2">
@@ -42,4 +104,6 @@ CandidateCard.propTypes = {
   visi: PropTypes.string,
   misi: PropTypes.array,
   reverse: PropTypes.bool,
+  // should be from "top" or "bottom"
+  numberPosition: PropTypes.string,
 }
