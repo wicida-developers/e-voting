@@ -1,9 +1,12 @@
 import { useState } from "react"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
+import { useSelector } from "react-redux"
+import api from "../lib/api"
 
 export default function VotePage() {
-  const [voteStatus, setVoteStatus] = useState(localStorage.getItem("voteStatus") || false)
+  const authUser = useSelector((state) => state.authUser)
+  const [voteStatus, setVoteStatus] = useState(authUser.chosen || false)
 
   const handleVote = async (e) => {
     const { value } = e.target
@@ -28,7 +31,7 @@ export default function VotePage() {
 
         console.log(value)
         if (secondConfirmation.isConfirmed) {
-          localStorage.setItem("voteStatus", true)
+          await api.choose(value)
           setVoteStatus(true)
         }
       }
@@ -38,17 +41,22 @@ export default function VotePage() {
   }
 
   return (
-    <main className="min-h-screen bg-blue-400 grid place-items-center px-8 py-4 md:px-0 md:py-0">
-      <section className="max-w-2xl w-full text-center bg-gray-50 py-12 px-9 rounded-lg mx-8 md:shadow-md md:border md:border-gray-200">
+    <main className="min-h-screen bg-blue-400 grid place-items-center px-2 py-4 md:px-0 md:py-0">
+      <section className="max-w-2xl w-full text-center bg-gray-50 py-12 px-6 rounded-lg mx-8 md:shadow-md md:border md:border-gray-200">
         <h1 className="text-xl font-bold mb-10 md:text-2xl lg:text-3xl">
           PEMILIHAN CALON KETUA UMUM
           <br />
           HIMA-TI STMIK WIDYA CIPTA DHARMA <br /> PERIODE 2023/2024
         </h1>
         <div>
-          <div className="flex gap-5 w-full rounded flex-col items-center md:flex-row">
+          <div className="flex gap-5 w-full rounded flex-col items-center sm:flex-row">
             {voteStatus ? (
-              <h1 className="m-auto font-medium">Terima kasih telah berpartisipasi</h1>
+              <>
+                <div className="m-auto space-y-2">
+                  <span className="text-4xl">👍</span>
+                  <h1 className="">Terima kasih telah berpartisipasi</h1>
+                </div>
+              </>
             ) : (
               <>
                 <button

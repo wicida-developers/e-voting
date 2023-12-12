@@ -1,5 +1,9 @@
 import axios from "axios"
 
+const ngrokHeaders = {
+  "ngrok-skip-browser-warning": "true",
+}
+
 const api = (() => {
   const baseUrl = import.meta.env.VITE_API_URL
 
@@ -20,6 +24,7 @@ const api = (() => {
       ...options,
       headers: {
         ...options.headers,
+        ...ngrokHeaders,
         Authorization: `Bearer ${getAccessToken()}`,
       },
     })
@@ -38,10 +43,14 @@ const api = (() => {
   }
 
   async function login({ username, password }) {
-    const response = await axios.post(`${baseUrl}/login`, {
-      username,
-      password,
-    })
+    const response = await axios.post(
+      `${baseUrl}/login`,
+      {
+        username,
+        password,
+      },
+      { headers: ngrokHeaders },
+    )
 
     const { status } = response.data
 
@@ -55,7 +64,9 @@ const api = (() => {
   }
 
   async function getPolls() {
-    const response = await axios.get(`${baseUrl}/polls`)
+    const response = await axios.get(`${baseUrl}/polls`, {
+      headers: ngrokHeaders,
+    })
 
     const { status } = response.data
 
