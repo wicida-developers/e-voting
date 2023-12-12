@@ -32,11 +32,14 @@ function asyncSetAuthUser({ username, password }) {
     try {
       const authUser = await api.login({ username, password })
       dispatch(setAuthUser(authUser))
+      return { error: false }
     } catch (error) {
+      const response = error.response
       myToast.fire({
         icon: "error",
-        title: error.message,
+        title: response.data.message,
       })
+      return { error: true }
     }
   }
 }
