@@ -11,10 +11,10 @@ export default function LoginPage() {
 
   const dispatch = useDispatch()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     if (!username || !password) return myToast.fire({ icon: "error", title: "Username dan password harus diisi" })
-    dispatch(asyncSetAuthUser({ username, password }))
+    await dispatch(asyncSetAuthUser({ username, password }))
     navigate("/")
   }
 
